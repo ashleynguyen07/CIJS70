@@ -1,9 +1,13 @@
 
+let form = document.getElementById("form");
 
 function addTable() {
 
-    rn = window.prompt("Input number of rows", 1);
-    cn = window.prompt("Input number of columns",1);
+    form.onsubmit = (myTable) => {
+      myTable.preventDefault();
+
+    let rn = Number(form.rn.value);
+    let cn = Number(form.cn.value);
 
     var myTableDiv = document.getElementById("myTable");
 
@@ -15,7 +19,7 @@ function addTable() {
   
     for (var i = 0; i < parseInt(rn, 10); i++) {
       var tr = document.createElement('TR');
-      tableBody.appendChild(tr);
+      tableBody.appendChild(tr); // nối các row và column
   
       for (var j = 0; j < parseInt(cn, 10); j++) {
         var td = document.createElement('TD');
@@ -27,5 +31,8 @@ function addTable() {
     }
     myTableDiv.appendChild(table);
   }
-addTable();
+  }
+addTable()
+
+
 

@@ -1,23 +1,25 @@
-// take input from the user
-const lowerNumber = parseInt(prompt('Enter lower number: '));
-const higherNumber = parseInt(prompt('Enter higher number: '));
+let form = document.getElementById("form");
 
-console.log(`The prime numbers between ${lowerNumber} and ${higherNumber} are:`);
-
-// looping from lowerNumber to higherNumber
-for (let i = lowerNumber; i <= higherNumber; i++) {
-    let flag = 0;
-
-    // looping through 2 to user input number
-    for (let j = 2; j < i; j++) {
-        if (i % j == 0) {
-            flag = 1;
-            break;
+primeNumber = (n) => {
+    if (n < 2) {
+        return false;
+    }
+    for (let i = 2; i < n-1; i++) {
+        if (n % i == 0) {
+            return false;
         }
     }
+    return true;
+};
+form.onsubmit = (result) => {
+    result.preventDefault(); // chặn thông tin trang web reload để có thể lấy được thông tin từ user
 
-    // if number greater than 1 and not divisible by other numbers
-    if (i > 1 && flag == 0) {
-        console.log(i);
+    let num1 = Number(form.num1.value)
+    let num2 = Number(form.num2.value)
+
+    for (let i = num1; i < num2; i++)  {
+        if(primeNumber(i)) {
+            document.getElementById("Result").innerHTML += i + " ; ";
+        }
     }
 }
