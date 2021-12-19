@@ -20,6 +20,7 @@ function addTable() {
       for (var j = 0; j < parseInt(cn, 10); j++) {
         var td = document.createElement('TD');
         td.width = '75';
+        td.contentEditable = true;
         td.appendChild(document.createTextNode("text"));
         tr.appendChild(td);
       }
